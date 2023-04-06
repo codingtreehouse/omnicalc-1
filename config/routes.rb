@@ -8,4 +8,8 @@ Rails.application.routes.draw do
 
   get("/random/results", {:controller => "application",:action => "calculate_random"})
 
+  get("/square_root/new", {:controller => "application",:action => "sqrt_form"})
+
+  get("/square_root/results", {:controller => "application",:action => "sqrt_results"})
+
 end
