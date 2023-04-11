@@ -30,7 +30,7 @@ class ApplicationController < ActionController::Base
 
   def sqrt_results
     @number = params.fetch("sqrt").to_f
-    @sqrt = sqrt(@number)
+    @sqrt = Math.sqrt(@number)
     render({:template => "calculation_templates/sqrt_results.html.erb"})
   end
 end
