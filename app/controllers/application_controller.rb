@@ -39,14 +39,20 @@ class ApplicationController < ActionController::Base
 
   def payment_results
     @apr = params.fetch("user_apr").to_f
+    @aprp = format('%.4f%%',@apr)
     @apr = @apr / 100
     @years = params.fetch("user_years").to_f
     @principal = params.fetch("user_principal").to_f
+
+
 
     @numerator = @apr/12 * @principal
     @denominator = 1 - (1 + @apr/12)**(-@years*12) 
 
     @payment = @numerator / @denominator
+    @payment = format("$%.2f",@payment)
+    @years = format("%.1f",@years)
+    @principal = format("$%.2f",@principal)
 
     render({:template => "calculation_templates/payment_results.html.erb"})
   end
